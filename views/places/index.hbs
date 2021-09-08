@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Places</h1>
+    <a href="/places/new" class="btn btn-dark">Add a new place</a>
+    <hr>
+    <ul class="row gy-2">
+        {{#each places}}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{type}}</h6>
+                {{#each location.coordinates}}
+                <li class="status-details">{{this}}</li>
+                {{/each}}
+                <br>
+                <div class="container-fluid col-12 vertical-margin-2">
+                    <div class="row g-0 gy-0 justify-content-between">
+                        <form action="/places/{{id}}/edit" method="GET" class="col-12 col-sm-6 col-md-4">
+                            <button type="submit" class="btn btn-warning">Edit</button>
+                        </form>
+                        <form action="/places/{{id}}/delete" method="POST" class="col-12 col-sm-6 col-md-4">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </ul>
+    <hr>
+    <a href="/" class="btn btn-dark">Go back</a>
+</div>
